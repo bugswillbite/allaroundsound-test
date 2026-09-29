@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>All Around Sound - We turn your floor into a dance floor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/buildyourown.css">
+</head>
+<body>
+
+<header class="site-head">
+  <a class="brand" href="index.html#home"><i class="brand-mark"></i>All Around Sound</a>
+  <nav class="main-nav">
+    <a href="index.html#about">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="#">Build Your Event</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="index.html#team">Team</a>
+    <a href="halloffame.html">Hall of Fame</a>
+    <a href="index.html#testimonials">Testimonials</a>
+    <a href="index.html#faq">FAQ</a>
+  </nav>
+  <a class="cta" href="#contact">Get a quote</a>
+  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+</header>
+
+<main>
+
+  <!-- BUILD YOUR EVENT -->
+  <section class="build" id="build">
+    <div class="section-head section-head-dark">
+      <h2>Build your perfect night.</h2>
+      <p>Set your event type, hours, and add-ons, then spin the machine for a rough starting estimate.</p>
+    </div>
+
+    <div class="mixer">
+
+      <div class="mixer-block">
+        <span class="mixer-label">Event type</span>
+        <div class="builder-types" role="group" aria-label="Event type">
+          <button class="type-chip is-active" data-type="Wedding">Wedding</button>
+          <button class="type-chip" data-type="Mitzvah">Bar/Bat Mitzvah</button>
+          <button class="type-chip" data-type="Corporate">Corporate</button>
+          <button class="type-chip" data-type="Party">Party</button>
+        </div>
+      </div>
+
+      <div class="mixer-block">
+        <span class="mixer-label">Hours of coverage</span>
+        <div class="hours-fader">
+          <input type="range" id="hours-range" min="2" max="10" step="1" value="4" aria-label="Hours of coverage">
+          <div class="hours-readout"><strong id="hours-value">4</strong><small>HRS</small></div>
+        </div>
+      </div>
+
+      <div class="mixer-block">
+        <span class="mixer-label">Add services</span>
+        <div class="service-toggles">
+          <button class="toggle-switch is-active" data-service="dj" type="button">
+            <span class="toggle-track"><span class="toggle-knob"></span></span>
+            <span class="toggle-copy"><strong>DJ &amp; Lighting</strong><small>$100/hr + $100 setup &amp; breakdown</small></span>
+          </button>
+          <button class="toggle-switch" data-service="photobooth" type="button">
+            <span class="toggle-track"><span class="toggle-knob"></span></span>
+            <span class="toggle-copy"><strong>Photo Booth</strong><small>+$295 flat</small></span>
+          </button>
+          <button class="toggle-switch" data-service="karaoke" type="button">
+            <span class="toggle-track"><span class="toggle-knob"></span></span>
+            <span class="toggle-copy"><strong>Karaoke</strong><small>+$100 flat, add-on to DJ setup</small></span>
+          </button>
+          <button class="toggle-switch" data-service="photography" type="button">
+            <span class="toggle-track"><span class="toggle-knob"></span></span>
+            <span class="toggle-copy"><strong>Photography</strong><small>+$50/hr solo · $75/hr combined w/ video</small></span>
+          </button>
+          <button class="toggle-switch" data-service="videography" type="button">
+            <span class="toggle-track"><span class="toggle-knob"></span></span>
+            <span class="toggle-copy"><strong>Videography</strong><small>+$50/hr solo · $75/hr combined w/ photo</small></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="quote-machine glass-panel" id="quote-machine">
+        <div class="quote-display">
+          <span class="mixer-label">Estimated starting total</span>
+          <div class="quote-reel" id="quote-reel">$ - - -</div>
+          <p class="quote-disclaimer" id="quote-disclaimer">This is a rough, auto-generated estimate - your final price is confirmed in a personal quote from All Around Sound.</p>
+        </div>
+        <button class="spin-button" id="spin-btn" type="button"><span>Get My Quote</span></button>
+      </div>
+
+    </div>
+  </section>
+
+<footer class="site-foot">
+
+  <div class="footer-main">
+
+    <div class="footer-brand">
+      <strong>All Around Sound</strong>
+      <span>DJ · Photo Booth · Karaoke · Photography · Videography</span>
+      <span>Rochester, NY</span>
+    </div>
+
+
+    <div class="footer-social">
+
+      <span class="social-label">FOLLOW ALONG</span>
+
+      <div class="social-buttons">
+
+        <!-- FACEBOOK -->
+        <a
+          class="social-button"
+          href="https://www.facebook.com/share/1JeQqQDq3J/?mibextid=wwXIfr"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="All Around Sound on Facebook"
+        >
+          <div class="social-inner">
+
+            <div class="social-shine"></div>
+
+            <div class="social-colors">
+              <div class="social-red"></div>
+              <div class="social-green"></div>
+              <div class="social-blue"></div>
+              <div class="social-yellow"></div>
+            </div>
+
+            <span class="social-icon facebook-icon">f</span>
+
+          </div>
+        </a>
+
+
+        <!-- INSTAGRAM -->
+        <a
+          class="social-button"
+          href="https://www.instagram.com/allaround.dj"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="All Around Sound on Instagram"
+        >
+          <div class="social-inner">
+
+            <div class="social-shine"></div>
+
+            <div class="social-colors">
+              <div class="social-red"></div>
+              <div class="social-green"></div>
+              <div class="social-blue"></div>
+              <div class="social-yellow"></div>
+            </div>
+
+            <span class="social-icon instagram-icon"></span>
+
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer-bottom">
+    <span>© 2026 All Around Sound</span>
+    <span>Rochester, NY</span>
+  </div>
+
+</footer>
+
+
+
+<script src="js/buildyourown.js"></script>
+</body>
+</html>

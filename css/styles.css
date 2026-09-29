@@ -1536,8 +1536,6 @@ main>section{padding:150px 7vw 100px}
   justify-content: center;
 
   box-sizing: border-box;
-
-  margin-bottom: -140px;
 }
 
 
@@ -1655,9 +1653,6 @@ main>section{padding:150px 7vw 100px}
     transform: translateY(-170px) scale(1.05);
   }
 
-  .faq-sticky {
-  margin-bottom: -180px;
-}
 }
 
 
@@ -1909,7 +1904,7 @@ main>section{padding:150px 7vw 100px}
 
   gap: 20px;
 
-  background: #f3eee3;
+  background: #e2eafb;
 
   border: 2px solid #21150d;
 

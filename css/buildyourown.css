@@ -133,13 +133,13 @@ main>section{padding:150px 7vw 100px}
   outline:none;
 }
 .hours-fader input[type=range]::-webkit-slider-thumb{
-  -webkit-appearance:none;width:28px;height:28px;border-radius:50%;
+  -webkit-appearance:none;width:12px;height:28px;border-radius:3px;
   background:linear-gradient(155deg,#fff,var(--sky));
   box-shadow:0 6px 14px #00000055,inset 0 1px 0 #fff;
   border:2px solid #ffffffcc;cursor:pointer;
 }
 .hours-fader input[type=range]::-moz-range-thumb{
-  width:28px;height:28px;border-radius:50%;border:2px solid #ffffffcc;
+  width:12px;height:28px;border-radius:3px;border:2px solid #ffffffcc;
   background:linear-gradient(155deg,#fff,var(--sky));
   box-shadow:0 6px 14px #00000055,inset 0 1px 0 #fff;cursor:pointer;
 }

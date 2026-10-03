@@ -12,7 +12,7 @@
 <body>
 
 <header class="site-head">
-  <a class="brand" href="index.html#home"><i class="brand-mark"></i>All Around Sound</a>
+  <a class="brand" href="index.html#home"><img src="images/logo/logo-white.jpeg" style="width: 100px;"></a>
   <nav class="main-nav">
     <a href="index.html#about">About</a>
     <a href="index.html#services">Services</a>
@@ -23,7 +23,7 @@
     <a href="index.html#testimonials">Testimonials</a>
     <a href="index.html#faq">FAQ</a>
   </nav>
-  <a class="cta" href="#contact">Get a quote</a>
+  <a class="cta" href="index.html#contact">Get a quote</a>
   <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
 </header>
 
@@ -51,8 +51,8 @@
       <div class="mixer-block">
         <span class="mixer-label">Hours of coverage</span>
         <div class="hours-fader">
-          <input type="range" id="hours-range" min="2" max="10" step="1" value="4" aria-label="Hours of coverage">
-          <div class="hours-readout"><strong id="hours-value">4</strong><small>HRS</small></div>
+          <input type="range" id="hours-range" min="2" max="10" step="1" value="2" aria-label="Hours of coverage">
+          <div class="hours-readout"><strong id="hours-value">2</strong><small>HRS</small></div>
         </div>
       </div>
 
@@ -61,23 +61,27 @@
         <div class="service-toggles">
           <button class="toggle-switch is-active" data-service="dj" type="button">
             <span class="toggle-track"><span class="toggle-knob"></span></span>
-            <span class="toggle-copy"><strong>DJ &amp; Lighting</strong><small>$100/hr + $100 setup &amp; breakdown</small></span>
+            <span class="toggle-copy"><strong>DJ</strong><small>Includes set up and break down fee.</small></span>
+          </button>
+          <button class="toggle-switch is-active" data-service="lighting" type="button">
+            <span class="toggle-track"><span class="toggle-knob"></span></span>
+            <span class="toggle-copy"><strong>Lighting</strong><small>Flat rate.</small></span>
           </button>
           <button class="toggle-switch" data-service="photobooth" type="button">
             <span class="toggle-track"><span class="toggle-knob"></span></span>
-            <span class="toggle-copy"><strong>Photo Booth</strong><small>+$295 flat</small></span>
+            <span class="toggle-copy"><strong>Photo Booth</strong></span>
           </button>
           <button class="toggle-switch" data-service="karaoke" type="button">
             <span class="toggle-track"><span class="toggle-knob"></span></span>
-            <span class="toggle-copy"><strong>Karaoke</strong><small>+$100 flat, add-on to DJ setup</small></span>
+            <span class="toggle-copy"><strong>Karaoke</strong></span>
           </button>
           <button class="toggle-switch" data-service="photography" type="button">
             <span class="toggle-track"><span class="toggle-knob"></span></span>
-            <span class="toggle-copy"><strong>Photography</strong><small>+$50/hr solo · $75/hr combined w/ video</small></span>
+            <span class="toggle-copy"><strong>Photography</strong></span>
           </button>
           <button class="toggle-switch" data-service="videography" type="button">
             <span class="toggle-track"><span class="toggle-knob"></span></span>
-            <span class="toggle-copy"><strong>Videography</strong><small>+$50/hr solo · $75/hr combined w/ photo</small></span>
+            <span class="toggle-copy"><strong>Videography</strong></span>
           </button>
         </div>
       </div>
@@ -93,7 +97,7 @@
 
     </div>
   </section>
-
+</main>
 <footer class="site-foot">
 
   <div class="footer-main">

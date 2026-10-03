@@ -39,27 +39,159 @@ if (spinBtn && hoursRange && quoteReel && quoteMachine) {
     });
   });
 
-  // Pricing model: DJ is hourly + a flat setup/breakdown fee.
-  // Karaoke and Photo Booth are flat add-ons.
-  // Photography and Videography are hourly, discounted to a combined
-  // rate when both are booked together.
-  function calculateQuote(){
-    const hours = Number(hoursRange.value);
-    const active = {};
-    toggles.forEach(t => { active[t.dataset.service] = t.classList.contains('is-active'); });
+  // Pricing model
+function calculateQuote() {
+  const hours = Number(hoursRange.value);
 
-    let total = 0;
-    if (active.dj) total += hours * 100 + 100;
-    if (active.photobooth) total += 295;
-    if (active.karaoke) total += 100;
+  const active = {};
 
-    const hasPhoto = active.photography;
-    const hasVideo = active.videography;
-    if (hasPhoto && hasVideo) total += hours * 75;
-    else if (hasPhoto || hasVideo) total += hours * 50;
+  toggles.forEach(toggle => {
+    active[toggle.dataset.service] =
+      toggle.classList.contains('is-active');
+  });
 
-    return total;
+  let total = 0;
+
+
+  /* =========================================
+     DJ
+  ========================================= */
+
+  if (active.dj) {
+
+    let djRate;
+
+    if (
+      document
+        .querySelector('.type-chip.is-active')
+        ?.dataset.type === 'Wedding' ||
+      document
+        .querySelector('.type-chip.is-active')
+        ?.dataset.type === 'Mitzvah'
+    ) {
+      // Weddings + Bar/Bat Mitzvahs
+      djRate = 400;
+    } else {
+      // Corporate + Parties
+      djRate = 100;
+    }
+
+    total += (hours * djRate) + 200;
   }
+
+
+  /* =========================================
+     LIGHTING
+  ========================================= */
+
+  if (active.lighting) {
+
+    if (hours <= 6) {
+    total += 150;
+    } else if (hours >= 7) {
+      total += 250;
+    }
+  }
+
+
+  /* =========================================
+     PHOTO BOOTH
+  ========================================= */
+
+  if (active.photobooth) {
+
+    if (hours === 2) {
+      total += 500;
+    } else if (hours === 3) {
+      total += 650;
+    } else if (hours === 4) {
+      total += 800;
+    } else if (hours === 5) {
+      total += 900;
+    } else if (hours === 6) {
+      total += 1000;
+    } else if (hours === 7) {
+      total += 1100;
+    } else if (hours === 8) {
+      total += 1200;
+    } else if (hours === 9) {
+      total += 1400;
+    } else if (hours === 10) {
+      total += 1600;
+    }
+    
+  }
+
+
+  /* =========================================
+     KARAOKE
+  ========================================= */
+
+  if (active.karaoke) {
+    total += hours * 100;
+  }
+
+
+  /* =========================================
+     PHOTOGRAPHY
+  ========================================= */
+
+  if (active.photography) {
+
+    if (hours === 2) {
+      total += 400;
+    } else if (hours === 3) {
+      total += 550;
+    } else if (hours === 4) {
+      total += 700;
+    } else if (hours === 5) {
+      total += 850;
+    } else if (hours === 6) {
+      total += 1000;
+    } else if (hours === 7) {
+      total += 1150;
+    } else if (hours === 8) {
+      total += 1300;
+    } else if (hours === 9) {
+      total += 1450;
+    } else if (hours === 10) {
+      total += 1600;
+    }
+
+  }
+
+
+  /* =========================================
+     VIDEOGRAPHY
+  ========================================= */
+
+  if (active.videography) {
+
+    if (hours === 2) {
+      total += 400;
+    } else if (hours === 3) {
+      total += 550;
+    } else if (hours === 4) {
+      total += 700;
+    } else if (hours === 5) {
+      total += 850;
+    } else if (hours === 6) {
+      total += 1000;
+    } else if (hours === 7) {
+      total += 1150;
+    } else if (hours === 8) {
+      total += 1300;
+    } else if (hours === 9) {
+      total += 1450;
+    } else if (hours === 10) {
+      total += 1600;
+    }
+
+  }
+
+
+  return total;
+}
 
   function formatCurrency(n){
     return `$${n.toLocaleString('en-US')}`;

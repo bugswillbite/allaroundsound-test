@@ -27,7 +27,7 @@ const quoteCount = document.getElementById('quote-count');
 
 function renderQuote(){
   const t = testimonials[quoteIndex];
-  quoteText.textContent = t.quote;
+  quoteText.textContent = `“${t.quote}”`;
   quoteName.textContent = t.name;
   quoteCount.textContent = `${quoteIndex + 1} / ${testimonials.length}`;
 }
@@ -164,7 +164,7 @@ const faqData = {
   2: {
     title: "What do you bring?",
     answer:
-      "We come prepared! Depending on your events needs, we can provide professional speakers, wireless microphones, mixers, speaker stands, dance floor and ambient lighting, uplighting, special effects and our All Around Sound DJ booth! we also offer more event-specific equipment if you are interested in our other services. We’ll help you choose the right setup to create the perfect atmosphere, deliver exceptional sound, and keep everything running smoothly from start to finish - so your event is as memorable as possible!"
+      "We come prepared! Depending on your events needs, we can provide professional speakers, wireless microphones, mixers, speaker stands, dance floor and ambient lighting, uplighting, special effects, and our All Around Sound DJ booth! We also offer more event-specific equipment if you are interested in our other services. We'll help you choose the right setup to create the perfect atmosphere, deliver exceptional sound, and keep everything running smoothly from start to finish - so your event is as memorable as possible!"
     },
 
   3: {
@@ -176,19 +176,19 @@ const faqData = {
   4: {
     title: "Do you travel?",
     answer:
-      "We’re based in Rochester, NY, but we’re happy to travel throughout a large surrounding area! Just let us know where your event is taking place, and we’ll let you know about availability and any additional travel costs. Wherever the party is, we’ll do our best to get there!"
+      "We’re based in Rochester, NY, but we're happy to travel throughout a large surrounding area! Just let us know where your event is taking place, and we'll let you know about availability and any additional travel costs. Wherever the party is, we'll do our best to get there!"
   },
 
   5: {
     title: "How does the booking work?",
     answer:
-      "Ready to start planning? Get in touch with us! send over your information including event date, time, location, type of event, and any other details want us to know. From there, we will create a blue print for you! we’ll answer any questions you have, and help put together the right entertainment setup for your event. Whether you already know exactly what you want, or you’re still figuring things out, we’re happy to help you build an experience that fits your event, and your budget. And if you want to get a rough idea of pricing before reaching out, check out our Build Your Own Event option and put together your own personalized event!"
+      "Ready to start planning? Get in touch with us! Send over your information including event date, time, location, type of event, and any other details want us to know. From there, we will create a blue print for you! We'll answer any questions you have, and help put together the right entertainment setup for your event. Whether you already know exactly what you want, or if you’re still figuring things out, we’re happy to help you build an experience that fits your event, and your budget. If you want to get a rough idea of pricing before reaching out, check out our Build Your Own Event page and put together your own personalized event!"
   },
 
   6: {
     title: "What do you offer?",
     answer:
-      "We provide professional DJ entertainment for weddings, private parties, corporate events, school functions, and any event you want to have a good time at! To make your event even more awesome, we also offer our fun interactive Photo Booth experience, our immersive Karaoke service and to make sure your happiest moments are preserved forever, we also offer our high quality photography and videography options as well. Whether you need music to keep your guests dancing or a complete entertainment package, our experienced team has everything you need to make your event a success!"
+      "We provide professional DJ entertainment for weddings, private parties, corporate events, school functions, and any event you want to have a good time at! To make your event even more awesome, we also offer our fun interactive Photo Booth experience, our immersive Karaoke service, and to make sure your happiest moments are preserved forever, we also offer our high quality photography and videography options as well. Whether you need music to keep your guests dancing or a complete entertainment package, our experienced team has everything you need to make your event a success!"
   }
 };
 

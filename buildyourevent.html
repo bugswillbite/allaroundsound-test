@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Space+Mono:wght@400;700&family=VT323&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/buildyourown.css">
 </head>
 <body>
@@ -39,12 +40,28 @@
     <div class="mixer">
 
       <div class="mixer-block">
-        <span class="mixer-label">Event type</span>
-        <div class="builder-types" role="group" aria-label="Event type">
-          <button class="type-chip is-active" data-type="Wedding">Wedding</button>
-          <button class="type-chip" data-type="Mitzvah">Bar/Bat Mitzvah</button>
-          <button class="type-chip" data-type="Corporate">Corporate</button>
-          <button class="type-chip" data-type="Party">Party</button>
+        <span class="mixer-label">Event type (click the knob)</span>
+        <div class="event-selector">
+
+          <div class="clock-input" role="radiogroup" aria-label="Event type">
+            <input type="radio" id="event-1" name="event-type" data-type="Wedding" data-label="WEDDING" checked>
+            <input type="radio" id="event-2" name="event-type" data-type="Mitzvah" data-label="MITZVAH">
+            <input type="radio" id="event-3" name="event-type" data-type="Corporate" data-label="CORPORATE">
+            <input type="radio" id="event-4" name="event-type" data-type="Party" data-label="PARTY">
+
+            <label for="event-1" aria-label="Wedding"></label>
+            <label for="event-2" aria-label="Bar/Bat Mitzvah"></label>
+            <label for="event-3" aria-label="Corporate"></label>
+            <label for="event-4" aria-label="Party"></label>
+
+            <div class="dial"></div>
+          </div>
+
+          <div class="event-screen" aria-live="polite">
+            <div class="screen-label">EVENT TYPE</div>
+            <div class="screen-value" id="event-value">WEDDING</div>
+          </div>
+
         </div>
       </div>
 

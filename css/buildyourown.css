@@ -28,7 +28,6 @@ p{margin:0}
 
 .mono{font-family:"Space Mono",monospace}
 
-/* glass panel primitive — frutiger-aero glass tray: directional shadow, rim highlight, corner glow */
 .glass-panel{
   position:relative;
   overflow:hidden;
@@ -47,7 +46,6 @@ p{margin:0}
   pointer-events:none;
 }
 
-/* halftone dot field — soft fade, pulled from the reference dot-gradient artwork */
 .dot-field{
   position:absolute;inset:0;z-index:-1;pointer-events:none;
   background-image:radial-gradient(circle,var(--sky) 32%,transparent 34%);
@@ -61,7 +59,6 @@ p{margin:0}
   opacity:.4;
 }
 
-/* blurred glass-square grid — pulled from the reference blurred-tile artwork */
 .grid-field{
   position:absolute;inset:-10%;z-index:-1;pointer-events:none;
   background-image:
@@ -125,7 +122,7 @@ main>section{padding:150px 7vw 100px}
 .type-chip.is-active{background:var(--sky);color:var(--ink);border-color:transparent}
 .type-chip:active{transform:scale(.96)}
 
-/* hours fader — styled like a DJ crossfader */
+/* hours fader */
 .hours-fader{display:flex;flex-wrap:wrap;align-items:center;gap:22px}
 .hours-readout{
   display:flex;align-items:baseline;gap:5px;padding:10px 16px;border-radius:12px;
@@ -157,7 +154,7 @@ main>section{padding:150px 7vw 100px}
 .toggle-copy strong{display:block;font-size:13px;font-weight:700}
 .toggle-copy small{display:block;margin-top:2px;font-family:"Space Mono",monospace;font-size:10px;color:#9fb3ba}
 
-/* quote machine — casino-style reveal */
+/* quote machine */
 .quote-machine{
   margin-top:6px;padding:34px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
   color:var(--ink);
@@ -196,17 +193,7 @@ main>section{padding:150px 7vw 100px}
   .spin-button{width:100%}
 }
 
-/* ---------- FOOTER ---------- */
-/* .site-foot{
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
-  padding:26px 5vw;background:#080c12;color:#788492;font-family:"Space Mono",monospace;font-size:11px;
-}
-.site-foot strong{color:#fff} */
-
-
-/* =========================================================
-   ALL AROUND SOUND — SOCIAL FOOTER
-   ========================================================= */
+/* SOCIAL FOOTER */
 
 .site-foot {
   position: relative;
@@ -232,9 +219,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   MAIN FOOTER
-   ========================================================= */
+/* MAIN FOOTER */
 
 .footer-main {
   width: min(1200px, 100%);
@@ -249,9 +234,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   BRAND
-   ========================================================= */
+/* BRAND */
 
 .footer-brand {
   display: flex;
@@ -285,9 +268,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   SOCIAL AREA
-   ========================================================= */
+/* SOCIAL AREA */
 
 .footer-social {
   display: flex;
@@ -310,9 +291,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   SOCIAL BUTTON ROW
-   ========================================================= */
+/* SOCIAL BUTTON ROW */
 
 .social-buttons {
   display: flex;
@@ -322,9 +301,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   SOCIAL BUTTON
-   ========================================================= */
+/* SOCIAL BUTTON */
 
 .social-button {
   position: relative;
@@ -357,9 +334,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   INNER GLOSSY SPHERE
-   ========================================================= */
+/* INNER GLOSSY SPHERE */
 
 .social-inner {
   position: absolute;
@@ -385,9 +360,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   TOP GLASS HIGHLIGHT
-   ========================================================= */
+/* TOP GLASS HIGHLIGHT */
 
 .social-shine {
   position: absolute;
@@ -415,9 +388,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   COLOR BURST
-   ========================================================= */
+/* COLOR BURST */
 
 .social-colors {
   position: absolute;
@@ -554,9 +525,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   ICONS
-   ========================================================= */
+/* ICONS */
 
 .social-icon {
   position: absolute;
@@ -638,9 +607,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   HOVER
-   ========================================================= */
+/* HOVER */
 
 .social-button:hover {
   transform:
@@ -667,9 +634,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   FOOTER BOTTOM
-   ========================================================= */
+/* FOOTER BOTTOM */
 
 .footer-bottom {
   width: min(1200px, 100%);
@@ -689,9 +654,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   MOBILE
-   ========================================================= */
+/* MOBILE */
 
 @media (max-width: 650px) {
 
@@ -744,7 +707,6 @@ main>section{padding:150px 7vw 100px}
 
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:960px){
-  /* same mobile header as the home page: logo centered, scrolling nav row underneath */
   .site-head{
     display:grid;
     grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
@@ -782,9 +744,7 @@ main>section{padding:150px 7vw 100px}
   main>section{padding:120px 6vw 70px}
 }
 
-/* =========================================================
-   GLASS FAQ
-   ========================================================= */
+/* GLASS FAQ */
 
 .faq-section {
   --glass: rgba(181, 250, 255, 0.19);
@@ -812,9 +772,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   HEADER
-   ========================================================= */
+/* HEADER */
 
 .faq-header {
   margin-bottom: 45px;
@@ -851,9 +809,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   FAQ LIST
-   ========================================================= */
+/* FAQ LIST */
 
 .faq-list {
   display: flex;
@@ -862,9 +818,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   FAQ ITEM
-   ========================================================= */
+/* FAQ ITEM */
 
 .faq-item {
   position: relative;
@@ -894,9 +848,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   QUESTION
-   ========================================================= */
+/* QUESTION */
 
 .faq-question {
   position: relative;
@@ -932,9 +884,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   GLASS FRAME
-   ========================================================= */
+/* GLASS FRAME */
 
 .faq-frame {
   position: absolute;
@@ -992,9 +942,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   CORNER POINTS
-   ========================================================= */
+/* CORNER POINTS */
 
 .faq-point {
   position: absolute;
@@ -1037,9 +985,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   QUESTION NUMBER
-   ========================================================= */
+/* QUESTION NUMBER */
 
 .faq-number {
   position: relative;
@@ -1055,9 +1001,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   QUESTION TEXT
-   ========================================================= */
+/* QUESTION TEXT */
 
 .faq-question-text {
   position: relative;
@@ -1081,9 +1025,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   PLUS ICON
-   ========================================================= */
+/* PLUS ICON */
 
 .faq-plus {
   position: relative;
@@ -1137,9 +1079,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   HOVER
-   ========================================================= */
+/* HOVER */
 
 .faq-item:hover {
   transform: translateY(-3px);
@@ -1167,9 +1107,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   OPEN STATE
-   ========================================================= */
+/* OPEN STATE */
 
 .faq-item[open] {
   background:
@@ -1197,9 +1135,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   ANSWER
-   ========================================================= */
+/* ANSWER */
 
 .faq-answer {
   position: relative;
@@ -1248,9 +1184,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   ACCESSIBILITY
-   ========================================================= */
+/* ACCESSIBILITY */
 
 .faq-question:focus-visible {
   outline: 2px solid rgba(63, 135, 166, 0.55);
@@ -1258,9 +1192,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   FALLBACK IF BACKDROP FILTER ISN'T AVAILABLE
-   ========================================================= */
+/* FALLBACK IF BACKDROP FILTER ISN'T AVAILABLE */
 
 @supports not (
   backdrop-filter: blur(1px)
@@ -1271,9 +1203,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   MOBILE
-   ========================================================= */
+/* MOBILE */
 
 @media (max-width: 600px) {
 
@@ -1327,9 +1257,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
+/* REDUCED MOTION */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -1345,9 +1273,7 @@ main>section{padding:150px 7vw 100px}
 
 
 
-/* =========================
-   EVENT TYPE KNOB + DJ SCREEN
-========================= */
+/* EVENT TYPE KNOB + SCREEN */
 
 .event-selector {
   display: flex;
@@ -1394,7 +1320,6 @@ main>section{padding:150px 7vw 100px}
   border-radius: 50%;
 }
 
-/* radios stay focusable for keyboard users, just invisible */
 .clock-input input {
   position: absolute;
   opacity: 0;
@@ -1437,8 +1362,7 @@ main>section{padding:150px 7vw 100px}
   to   { transform: rotate(0deg); }
 }
 
-/* Click areas: every label covers the whole knob. The label for the NEXT
-   position sits on top, so clicking the knob always turns it one notch. */
+/* Click areas */
 .clock-input label {
   position: absolute;
   inset: 0;
@@ -1521,9 +1445,7 @@ main>section{padding:150px 7vw 100px}
 }
 
 
-/* =========================
-   ADD-ON DURATION OPTIONS
-========================= */
+/* ADD-ON DURATION OPTIONS */
 
 .service-item { display: flex; flex-direction: column; }
 .service-item .toggle-switch { position: relative; z-index: 1; }
@@ -1560,9 +1482,7 @@ main>section{padding:150px 7vw 100px}
 
 .duration-hours .hours-readout strong { font-size: 18px; }
 
-/* ==========================================================================
-   Horizontal soundboard fader (hours sliders)
-   ========================================================================== */
+/* Horizontal soundboard fader (hours sliders) */
 
 .snd-regulator-context {
   display: flex;
@@ -1591,8 +1511,6 @@ main>section{padding:150px 7vw 100px}
   box-shadow: inset 0 1px 0 #ffffff12;
 }
 
-/* Track area. Tick marks line up with the thumb centre for each hour:
-   the thumb is 36px wide, so it travels from 18px to (width - 18px). */
 .snd-regulator-context .snd-fader-container {
   position: relative;
   height: 60px;

@@ -101,7 +101,6 @@ contactForm?.addEventListener('submit', async (event) => {
   */
 
   // Temporary frontend confirmation
-  // Replace this section with your real email request.
 
   await new Promise(resolve => setTimeout(resolve, 700));
 

@@ -744,8 +744,39 @@ main>section{padding:150px 7vw 100px}
 
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:960px){
-  .main-nav{display:none}
-  .nav-toggle{display:block}
+  /* same mobile header as the home page: logo centered, scrolling nav row underneath */
+  .site-head{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+    grid-template-rows:auto auto;
+    height:auto;
+    min-height:96px;
+    padding:10px 14px 8px;
+    gap:8px 0;
+  }
+  .brand{grid-column:2;grid-row:1;justify-self:center}
+  .main-nav{
+    display:flex;
+    grid-column:1 / -1;
+    grid-row:2;
+    width:100%;
+    min-width:0;
+    gap:18px;
+    overflow-x:auto;
+    padding-bottom:3px;
+    white-space:nowrap;
+    scrollbar-width:none;
+  }
+  .main-nav::-webkit-scrollbar{display:none}
+  .cta{grid-column:3;grid-row:1;justify-self:end;padding:8px 10px;margin-left:0;font-size:11px}
+  .nav-toggle{display:none}
+}
+@media (max-width:650px){
+  .nav-temp{display:none}
+  .main-nav a{font-size:10px}
+  .main-nav{align-items:center}
+  .main-nav a:nth-child(2){margin-left:auto}
+  .main-nav a:last-child{margin-right:auto}
 }
 @media(max-width:560px){
   main>section{padding:120px 6vw 70px}

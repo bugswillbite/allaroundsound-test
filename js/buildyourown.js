@@ -272,12 +272,3 @@ if (spinBtn && hoursRange && quoteReel && quoteMachine) {
     rollReel(formatCurrency(calculateQuote()));
   });
 }
-
-// ---------- MOBILE NAV ----------
-const navToggle = document.querySelector('.nav-toggle');
-const mainNav = document.querySelector('.main-nav');
-navToggle?.addEventListener('click', () => {
-  const open = mainNav.style.display === 'flex';
-  mainNav.style.display = open ? 'none' : 'flex';
-  navToggle.setAttribute('aria-expanded', String(!open));
-});

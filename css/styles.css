@@ -2588,6 +2588,10 @@ main>section{padding:150px 7vw 100px}
   box-shadow: 0 28px 46px rgba(0, 0, 0, 0.35);
 }
 
+.speaker{
+  display: none;
+}
+
 }
 
 .speaker{

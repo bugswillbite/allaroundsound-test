@@ -30,14 +30,12 @@ if (eventRadios.length && dialEl && eventValue) {
     radio.addEventListener('change', () => {
       if (!radio.checked) return;
 
-      // shortest direction: clicking turns clockwise, arrow keys can turn back
       let delta = (index - current + count) % count;
       if (delta > count / 2) delta -= count;
       angle += delta * step;
       current = index;
       dialEl.style.setProperty('--angle', `${angle}deg`);
 
-      // screen: fade out, swap text, fade in
       clearTimeout(fadeTimer);
       eventValue.style.opacity = '0';
       eventValue.style.transform = 'translateY(2px)';
@@ -60,18 +58,15 @@ const spinBtn = document.getElementById('spin-btn');
 
 if (spinBtn && hoursRange && quoteReel && quoteMachine) {
 
-  // ---- Add-ons that can cover less than the whole event ----
-  // (DJ and lighting always follow the event hours)
   const PARTIAL_SERVICES = ['photobooth', 'karaoke', 'photography', 'videography'];
-  const MIN_HOURS = 2; // shortest bookable length (first column of the price tables)
-  const addons = {};   // service -> { mode, hours, panel, ... }
+  const MIN_HOURS = 2; 
+  const addons = {};   
 
   PARTIAL_SERVICES.forEach(service => {
     const toggle = document.querySelector(`.toggle-switch[data-service="${service}"]`);
     if (!toggle) return;
     const name = toggle.querySelector('strong')?.textContent ?? service;
 
-    // wrap the toggle so the options panel can sit directly under it
     const item = document.createElement('div');
     item.className = 'service-item';
     toggle.before(item);
@@ -126,7 +121,6 @@ if (spinBtn && hoursRange && quoteReel && quoteMachine) {
     return Number(hoursRange.value);
   }
 
-  // hours this service is actually booked for (never more than the event)
   function serviceHours(service) {
     const total = eventHours();
     const a = addons[service];
@@ -137,7 +131,7 @@ if (spinBtn && hoursRange && quoteReel && quoteMachine) {
   function syncAddon(service) {
     const a = addons[service];
     const total = eventHours();
-    const canSplit = total > MIN_HOURS; // a 2-hour event has nothing shorter to pick
+    const canSplit = total > MIN_HOURS; 
 
     if (!canSplit) a.mode = 'whole';
     a.hours = Math.min(Math.max(a.hours, MIN_HOURS), total);
@@ -167,7 +161,7 @@ if (spinBtn && hoursRange && quoteReel && quoteMachine) {
 
   hoursRange.addEventListener('input', () => {
     hoursValue.textContent = hoursRange.value;
-    syncAddons(); // keeps add-on hours from exceeding the event
+    syncAddons(); 
   });
 
   toggles.forEach(toggle => {
@@ -179,7 +173,7 @@ if (spinBtn && hoursRange && quoteReel && quoteMachine) {
 
   syncAddons();
 
-  // Pricing model: price per hours of coverage (2 to 10)
+  // Pricing model
   const PRICES = {
     //            2h    3h    4h    5h    6h    7h    8h    9h    10h
     lighting:    [150,  150,  150,  150,  150,  250,  250,  250,  250],
@@ -189,16 +183,14 @@ if (spinBtn && hoursRange && quoteReel && quoteMachine) {
     videography: [600,  800,  1050,  1300, 1500, 1700, 1900, 2100, 2300],
   };
 
-  // DJ has two pricing structures, chosen by event type
   const DJ_PRICING = {
-    // Weddings + Bar/Bat Mitzvahs: set price per hours of coverage
-    // (2h and 3h are PLACEHOLDERS - confirm)
+    // Weddings + Bar/Bat Mitzvahs
     premium: {
       //      2h   3h    4h    5h    6h    7h    8h    9h    10h
       prices: [800, 1000, 1200, 1400, 1600, 1800, 2000, 2400, 2600],
-      setupFee: 0, // set to 200 if the prices above do NOT already include set up/break down
+      setupFee: 0, // set to 200 if the prices above do not already include set up/break down
     },
-    // Corporate + Parties: hourly rate plus flat set up/break down fee
+    // Corporate + Parties
     standard: {
       hourlyRate: 100,
       setupFee: 200,
@@ -225,9 +217,8 @@ if (spinBtn && hoursRange && quoteReel && quoteMachine) {
       if (service === 'dj') {
         total += getDjTotal(hours);
       } else if (service === 'lighting') {
-        total += PRICES.lighting[hours - 2] ?? 0; // follows the event hours
+        total += PRICES.lighting[hours - 2] ?? 0; 
       } else if (PRICES[service]) {
-        // add-ons use their own hours (event hours unless set shorter)
         total += PRICES[service][serviceHours(service) - 2] ?? 0;
       }
     });
@@ -238,8 +229,7 @@ if (spinBtn && hoursRange && quoteReel && quoteMachine) {
     return `$${n.toLocaleString('en-US')}`;
   }
 
-  // Casino-style reveal: digits scramble rapidly, then lock in
-  // left-to-right until the final total is shown.
+  // Casino-style reveal
   function rollReel(finalText){
     const chars = finalText.split('');
     const stopFrame = i => 14 + i * 3;

@@ -1289,6 +1289,10 @@ main>section{padding:150px 7vw 100px}
     line-height: 1.6;
   }
 
+  .nav-temp {
+    display: none;
+  }
+
 }
 
 

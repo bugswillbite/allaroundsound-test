@@ -86,7 +86,13 @@ if (spinBtn && hoursRange && quoteReel && quoteMachine) {
         <button type="button" class="duration-chip" data-mode="custom">Specific hours</button>
       </div>
       <div class="duration-hours hours-fader" hidden>
-        <input type="range" min="${MIN_HOURS}" max="${MIN_HOURS}" step="1" value="${MIN_HOURS}" aria-label="${name} hours">
+        <div class="snd-regulator-context">
+          <div class="snd-fader-panel snd-fader-panel--compact">
+            <div class="snd-fader-container">
+              <input type="range" class="snd-audio-fader" min="${MIN_HOURS}" max="${MIN_HOURS}" step="1" value="${MIN_HOURS}" aria-label="${name} hours">
+            </div>
+          </div>
+        </div>
         <div class="hours-readout"><strong>${MIN_HOURS}</strong><small>HRS</small></div>
       </div>`;
     item.appendChild(panel);
@@ -137,6 +143,7 @@ if (spinBtn && hoursRange && quoteReel && quoteMachine) {
     a.hours = Math.min(Math.max(a.hours, MIN_HOURS), total);
 
     a.slider.max = String(total);
+    a.slider.parentElement.style.setProperty('--steps', Math.max(1, total - MIN_HOURS)); // tick marks: one per hour
     a.slider.value = String(a.hours);
     a.readout.textContent = a.hours;
 

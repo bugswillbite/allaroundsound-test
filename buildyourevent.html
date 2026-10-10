@@ -68,7 +68,13 @@
       <div class="mixer-block">
         <span class="mixer-label">Hours of coverage</span>
         <div class="hours-fader">
-          <input type="range" id="hours-range" min="2" max="10" step="1" value="2" aria-label="Hours of coverage">
+          <div class="snd-regulator-context">
+            <div class="snd-fader-panel">
+              <div class="snd-fader-container" style="--steps:8">
+                <input type="range" class="snd-audio-fader" id="hours-range" min="2" max="10" step="1" value="2" aria-label="Hours of coverage">
+              </div>
+            </div>
+          </div>
           <div class="hours-readout"><strong id="hours-value">2</strong><small>HRS</small></div>
         </div>
       </div>

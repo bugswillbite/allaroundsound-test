@@ -2529,3 +2529,12 @@ main>section{padding:150px 7vw 100px}
   margin-top: -7px;
   margin-left: 9px;
 }
+
+.crateback {
+  background-color: #0c0d61;
+  height: 86px;
+  width: 338px;
+  margin-top: 53px;
+  margin-left: 1px;
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+}

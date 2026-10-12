@@ -36,7 +36,7 @@
     <div class="hero-copy">
       <p class="kicker">Rochester, NY · DJ &amp; event entertainment since 1997</p>
       <h1>We turn your floor<br>into a dance floor.</h1>
-      <p class="lede">Weddings, bar &amp; bat mitzvahs, corporate events, school dances, and everything worth celebrating - DJ, photo booth, karaoke, photography, videography, and lighting under one roof.</p>
+      <p class="lede">Weddings, Bar &amp; Bat mitzvahs, corporate events, school dances, and everything worth celebrating - DJ, photo booth, karaoke, photography, videography, and lighting under one roof.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="buildyourevent.html">Build your event</a>
         <a class="btn btn-ghost" href="#services">See what we offer</a>
@@ -86,7 +86,7 @@
         <div class="grid-field"></div>
       </div>
       <div class="about-copy">
-        <h2>Nearly three decades of packed dance floors.</h2>
+        <h2>Three decades of packed dance floors.</h2>
         <p>Since 1997 we've been providing professional entertainment for weddings, private events, corporate functions, and special occasions across Upstate New York. What started as a DJ company has grown into a complete entertainment package - DJ, Photo Booth, Karaoke, Photography, and Videography - so you can build the exact night you want with one team.</p>
         <p>Every event is personalized around your music, your guests, and your atmosphere. If there's a song you want to hear, just ask - we take requests before and during the event.</p>
       </div>
@@ -121,7 +121,7 @@
       <div class="service-panel glass-panel" data-panel="karaoke">
         <span class="service-price">Add to your event</span>
         <h3>Karaoke</h3>
-        <p>A TV screen, wireless microphones, an extensive song library, and our big booming speakers - plus your favorite family member singing their heart out.</p>
+        <p>A TV screen, wireless microphones, an extensive song library, and our room thumping speakers - plus your favorite family member singing their heart out.</p>
       </div>
       <div class="service-panel glass-panel" data-panel="photovideo">
         <span class="service-price">Add to your event</span>
@@ -197,7 +197,7 @@
   <!-- TESTIMONIALS -->
   <section class="testimonials" id="testimonials">
     <div class="section-head">
-      <h2>Don't take our word for it.</h2>
+      <h2>Don't just take our word for it.</h2>
     </div>
     <div class="quote-rig glass-panel">
       <blockquote id="quote-text">&quot;All Around Sound of Monroe County is absolutely fantastic! DJ Stu is incredibly professional, responsive, and accommodating, and his prices are very competitive. We had the pleasure of working with his new DJ, Sam, who was excellent and played all the hits that kept everyone on the dance floor.&quot;</blockquote>
@@ -225,7 +225,7 @@
     <div class="crate">
 
       <!-- RECORD 1 -->
-      <div class="record-sleeve sleeve-1" data-faq="1">
+      <div class="record-sleeve sleeve-1" data-faq="1" role="button" tabindex="0" aria-pressed="false" aria-controls="faq-answer">
         <div class="sleeve-content">
           <span class="sleeve-number">EXPECTATIONS</span>
 
@@ -237,7 +237,7 @@
 
 
       <!-- RECORD 2 -->
-      <div class="record-sleeve sleeve-2" data-faq="2">
+      <div class="record-sleeve sleeve-2" data-faq="2" role="button" tabindex="0" aria-pressed="false" aria-controls="faq-answer">
         <div class="sleeve-content">
           <span class="sleeve-number">EQUIPMENT</span>
 
@@ -250,7 +250,7 @@
 
 
       <!-- RECORD 3 -->
-      <div class="record-sleeve sleeve-3" data-faq="3">
+      <div class="record-sleeve sleeve-3" data-faq="3" role="button" tabindex="0" aria-pressed="false" aria-controls="faq-answer">
         <div class="sleeve-content">
           <span class="sleeve-number">MUSIC</span>
 
@@ -263,7 +263,7 @@
 
 
       <!-- RECORD 4 -->
-      <div class="record-sleeve sleeve-4" data-faq="4">
+      <div class="record-sleeve sleeve-4" data-faq="4" role="button" tabindex="0" aria-pressed="false" aria-controls="faq-answer">
         <div class="sleeve-content">
           <span class="sleeve-number">TRAVEL</span>
 
@@ -276,7 +276,7 @@
 
 
       <!-- RECORD 5 -->
-      <div class="record-sleeve sleeve-5" data-faq="5">
+      <div class="record-sleeve sleeve-5" data-faq="5" role="button" tabindex="0" aria-pressed="false" aria-controls="faq-answer">
         <div class="sleeve-content">
           <span class="sleeve-number">BOOKING</span>
 
@@ -288,7 +288,7 @@
       </div>
 
       <!-- RECORD 6 -->
-      <div class="record-sleeve sleeve-6" data-faq="6">
+      <div class="record-sleeve sleeve-6" data-faq="6" role="button" tabindex="0" aria-pressed="false" aria-controls="faq-answer">
         <div class="sleeve-content">
           <span class="sleeve-number">SERVICES</span>
 
@@ -325,13 +325,13 @@
 
 
     <!-- ANSWER -->
-    <div class="faq-answer">
+    <div class="faq-answer" id="faq-answer">
 
       <div class="answer-number" style="display: none;">
         01
       </div>
 
-      <div class="answer-content">
+      <div class="answer-content" aria-live="polite" aria-atomic="true">
 
         <h3>
           What do you offer?
@@ -353,7 +353,16 @@
       </div>
 
       <button
+        class="answer-next"
+        type="button"
+        aria-label="Next question"
+      >
+        →
+      </button>
+
+      <button
         class="answer-close"
+        type="button"
         aria-label="Close answer"
       >
         ×

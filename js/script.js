@@ -151,6 +151,7 @@ const answerNumber = document.querySelector(".answer-number");
 const answerTitle = document.querySelector(".answer-content h3");
 const answerText = document.querySelector(".answer-content p");
 const closeButton = document.querySelector(".answer-close");
+const nextButton = document.querySelector(".answer-next");
 
 
 const faqData = {
@@ -193,6 +194,24 @@ const faqData = {
 
 
 if (answerBox && records.length) {
+  const showFaq = (record) => {
+    const number = Number(record.dataset.faq);
+    const faq = faqData[number];
+
+    if (!faq) return;
+
+    records.forEach((item) => {
+      const isActive = item === record;
+      item.classList.toggle("is-active", isActive);
+      item.setAttribute("aria-pressed", String(isActive));
+    });
+
+    answerNumber.textContent = String(number).padStart(2, "0");
+    answerTitle.textContent = faq.title;
+    answerText.textContent = faq.answer;
+    answerBox.classList.add("active");
+    faqSection.classList.add("has-answer");
+  };
 
   /* =========================================
   RECORDS
@@ -219,34 +238,25 @@ if (answerBox && records.length) {
 
   records.forEach((record) => {
 
-    record.addEventListener("click", () => {
+    record.addEventListener("click", () => showFaq(record));
 
-      // mark the clicked card as selected, clear the rest
-      records.forEach((r) => r.classList.remove("is-active"));
-      record.classList.add("is-active");
-
-      const number =
-        Number(record.dataset.faq);
-
-      const faq =
-        faqData[number];
-
-      if (!faq) return;
-
-      answerNumber.textContent =
-        String(number).padStart(2, "0");
-
-      answerTitle.textContent =
-        faq.title;
-
-      answerText.textContent =
-        faq.answer;
-
-      answerBox.classList.add("active");
-      faqSection.classList.add("has-answer");
-
+    record.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        showFaq(record);
+      }
     });
 
+  });
+
+  nextButton?.addEventListener("click", () => {
+    const activeIndex = records.findIndex((record) =>
+      record.classList.contains("is-active")
+    );
+
+    if (activeIndex !== -1) {
+      showFaq(records[(activeIndex + 1) % records.length]);
+    }
   });
 
 
@@ -259,7 +269,10 @@ if (answerBox && records.length) {
     answerBox.classList.remove("active");
     faqSection.classList.remove("has-answer");
 
-    records.forEach((r) => r.classList.remove("is-active"));
+    records.forEach((record) => {
+      record.classList.remove("is-active");
+      record.setAttribute("aria-pressed", "false");
+    });
 
   });
 
@@ -278,7 +291,10 @@ if (answerBox && records.length) {
       answerBox.classList.remove("active");
       faqSection.classList.remove("has-answer");
 
-      records.forEach((r) => r.classList.remove("is-active"));
+      records.forEach((record) => {
+        record.classList.remove("is-active");
+        record.setAttribute("aria-pressed", "false");
+      });
 
     }
 

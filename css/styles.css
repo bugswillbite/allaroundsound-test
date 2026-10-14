@@ -2730,3 +2730,72 @@ main>section{padding:150px 7vw 100px}
   .services .service-panel h3{font-size:26px}
   .services .service-panel.glass-panel::after{display:none}
 }
+
+/* ==========================================================================
+   LEAVE A REVIEW
+   ========================================================================== */
+
+.review{
+  position:relative;
+  padding:10px 7vw 140px;
+}
+.review-shell{
+  width:min(720px,100%);
+  margin:0 auto;
+}
+.review-intro{
+  text-align:center;
+  margin-bottom:38px;
+}
+.review-eyebrow{
+  font-family:"Space Mono",monospace;
+  font-size:11px;
+  letter-spacing:.14em;
+  color:#5f7881;
+}
+.review-intro h2{
+  margin:14px 0 14px;
+  font-size:clamp(30px,5vw,52px);
+  font-weight:800;
+  letter-spacing:-.045em;
+  line-height:1.02;
+}
+.review-intro p{
+  margin:0 auto;
+  max-width:460px;
+  color:var(--steel);
+  line-height:1.6;
+}
+
+/* dark card, reusing the contact form styling */
+.review .review-card{
+  min-height:0;
+  background:
+    radial-gradient(circle at 85% 0%,rgba(167,222,230,.18),transparent 22rem),
+    linear-gradient(165deg,var(--deep-a),var(--deep-b));
+  color:#fff;
+  box-shadow:0 40px 80px rgba(10,28,44,.35),inset 0 1px 0 rgba(255,255,255,.2);
+}
+.review .contact-success{min-height:380px}
+
+.req{color:var(--sky);font-style:normal}
+
+.form-error{
+  margin:0;
+  padding:10px 14px;
+  border-radius:10px;
+  background:rgba(255,120,120,.12);
+  border:1px solid rgba(255,140,140,.4);
+  color:#ffc9c9;
+  font-size:12px;
+}
+.form-error[hidden]{display:none}
+
+.contact-form input.is-invalid,
+.contact-form textarea.is-invalid{
+  border-color:rgba(255,140,140,.8);
+}
+
+@media (max-width:560px){
+  .review{padding:0 6vw 100px}
+}

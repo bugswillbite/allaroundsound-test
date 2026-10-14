@@ -143,6 +143,95 @@ contactReset?.addEventListener('click', () => {
 });
 
 
+// ---------- LEAVE A REVIEW ----------
+// Name and review are both mandatory.
+
+const reviewForm = document.getElementById('review-form');
+const reviewFormState = document.getElementById('review-form-state');
+const reviewSuccess = document.getElementById('review-success');
+const reviewReset = document.getElementById('review-reset');
+const reviewName = document.getElementById('review-name');
+const reviewText = document.getElementById('review-text');
+const reviewError = document.getElementById('review-error');
+
+function showReviewError(message, field) {
+  reviewError.textContent = message;
+  reviewError.hidden = false;
+  [reviewName, reviewText].forEach(f => f.classList.toggle('is-invalid', f === field));
+  field.focus();
+}
+
+function clearReviewError() {
+  reviewError.hidden = true;
+  [reviewName, reviewText].forEach(f => f.classList.remove('is-invalid'));
+}
+
+reviewForm?.addEventListener('input', clearReviewError);
+
+reviewForm?.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  // trim first so a name or review of only spaces doesn't count
+  const name = reviewName.value.trim();
+  const review = reviewText.value.trim();
+
+  if (!name) {
+    showReviewError('Please enter your name.', reviewName);
+    return;
+  }
+  if (!review) {
+    showReviewError('Please write your review.', reviewText);
+    return;
+  }
+  if (review.length < 10) {
+    showReviewError('Your review is a little short. Please tell us a bit more.', reviewText);
+    return;
+  }
+  clearReviewError();
+
+  const submitButton = reviewForm.querySelector('.contact-submit');
+  submitButton.disabled = true;
+  const originalButtonText = submitButton.innerHTML;
+  submitButton.innerHTML = `
+    <span>Sending...</span>
+    <span class="submit-arrow">→</span>
+  `;
+
+  try {
+    /*
+      -------------------------------------------------------
+      SAVE THE REVIEW HERE
+      -------------------------------------------------------
+      Nothing is stored yet. Connect a form service or your Wix
+      CMS (for example a "Reviews" collection with an "approved"
+      field set to false) and send { name, review } from here.
+      Keep new reviews hidden until you approve them.
+      -------------------------------------------------------
+    */
+    await new Promise(resolve => setTimeout(resolve, 700)); // temporary
+  } catch (err) {
+    console.error('Review failed:', err);
+    submitButton.disabled = false;
+    submitButton.innerHTML = originalButtonText;
+    showReviewError('Sorry, something went wrong. Please try again in a moment.', reviewText);
+    return;
+  }
+
+  submitButton.disabled = false;
+  submitButton.innerHTML = originalButtonText;
+  reviewFormState.style.display = 'none';
+  reviewSuccess.hidden = false;
+  reviewSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+});
+
+reviewReset?.addEventListener('click', () => {
+  reviewSuccess.hidden = true;
+  reviewForm.reset();
+  clearReviewError();
+  reviewFormState.style.display = '';
+});
+
+
 const records = [...document.querySelectorAll(".record-sleeve")];
 
 const answerBox = document.querySelector(".faq-answer");

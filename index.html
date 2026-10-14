@@ -374,6 +374,101 @@
 
 </section>
 
+<!-- LEAVE A REVIEW -->
+<section class="review" id="review">
+  <div class="review-shell">
+
+    <div class="review-intro">
+      <span class="review-eyebrow">LEAVE A REVIEW</span>
+      <h2>Had a great night?<br>Tell us about it.</h2>
+      <p>Worked with All Around Sound? We'd love to hear how it went.</p>
+    </div>
+
+    <div class="review-card contact-card glass-panel">
+
+      <!-- FORM STATE -->
+      <div class="contact-form-state" id="review-form-state">
+
+        <div class="contact-card-top">
+          <div>
+            <span class="form-eyebrow">YOUR REVIEW</span>
+            <h3>How did we do?</h3>
+          </div>
+        </div>
+
+        <form class="contact-form" id="review-form" aria-label="Leave a review" novalidate>
+
+          <label>
+            <span>Name <em class="req" aria-hidden="true">*</em></span>
+            <input
+              type="text"
+              name="reviewer"
+              id="review-name"
+              autocomplete="name"
+              placeholder="Your name"
+              maxlength="80"
+              required
+              aria-required="true"
+            >
+          </label>
+
+          <label>
+            <span>Your review <em class="req" aria-hidden="true">*</em></span>
+            <textarea
+              name="review"
+              id="review-text"
+              rows="6"
+              placeholder="Tell us about your event and how it went..."
+              minlength="10"
+              maxlength="1200"
+              required
+              aria-required="true"
+            ></textarea>
+          </label>
+
+          <p class="form-error" id="review-error" role="alert" hidden></p>
+
+          <button class="contact-submit" type="submit">
+            <span>Submit my review</span>
+            <span class="submit-arrow">→</span>
+          </button>
+
+          <p class="form-note">
+            Both fields are required. Reviews are read by our team before
+            they appear on the site.
+          </p>
+
+        </form>
+
+      </div>
+
+
+      <!-- SUCCESS STATE -->
+      <div class="contact-success" id="review-success" aria-live="polite" hidden>
+
+        <div class="success-orb">
+          <span>✓</span>
+        </div>
+
+        <span class="success-eyebrow">REVIEW RECEIVED</span>
+
+        <h3>Thank you!</h3>
+
+        <p>
+          We really appreciate you taking the time to share your experience.
+        </p>
+
+        <button class="success-reset" type="button" id="review-reset">
+          Write another review
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
 <section class="contact" id="contact">
   <div class="dot-field dot-field-light" aria-hidden="true"></div>
 

@@ -1,3 +1,5 @@
+import { wix, imgUrl } from './wix.js';
+
 // ---------- SERVICES TABS ----------
 const serviceTabs = document.querySelectorAll('.service-tab');
 const servicePanels = document.querySelectorAll('.service-panel');
@@ -12,7 +14,8 @@ serviceTabs.forEach(tab => {
 });
 
 // ---------- TESTIMONIALS CAROUSEL ----------
-const testimonials = [
+// This list is the fallback. If the Wix "Testimonials" collection has items, they replace it.
+let testimonials = [
   { quote: "All Around Sound of Monroe County is absolutely fantastic! DJ Stu is incredibly professional, responsive, and accommodating, and his prices are very competitive. We had the pleasure of working with his new DJ, Sam, who was excellent and played all the hits that kept everyone on the dance floor.", name: "Adam Connors" },
   { quote: "DJ Sam at All Around Sound was the perfect choice for our Back to School night. He kept the kids engaged and having fun with dance parties, contests, and so much more. It was also very easy to work with DJ Stu to schedule the event and keep in touch on the details.", name: "Krissy Jones" },
   { quote: "DJ Stu and Sam have been working with my local school for at least a couple of years. They are professional, organized, flexible and wonderful to work with. They got the kids dancing and are always the highlight of the school events.", name: "Jenifer Ruske" },
@@ -45,6 +48,82 @@ if (quoteText && quoteName && quoteCount && quotePrev && quoteNext) {
   renderQuote();
 }
 
+async function loadTestimonials() {
+  if (!quoteText) return; // not the page with the carousel
+  try {
+    const { items: rows } = await wix.items.query('Testimonials')
+      .eq('visible', true).ascending('order').limit(100).find();
+    if (!rows.length) return;
+    testimonials = rows.map(r => ({ quote: r.quote, name: r.name }));
+    quoteIndex = 0;
+    renderQuote();
+  } catch (err) {
+    console.error('Could not load testimonials:', err);
+  }
+}
+loadTestimonials();
+
+// ---------- TEAM (from Wix CMS) ----------
+const teamGrid = document.querySelector('.team-grid');
+
+function buildTeamCard(m) {
+  const card = document.createElement('div');
+  card.className = 'team-card glass-panel';
+
+  if (m.photo) {
+    const img = document.createElement('img');
+    img.className = 'team-photo';
+    img.src = imgUrl(m.photo, 600, 600);
+    img.alt = m.name;
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    card.append(img);
+  }
+
+  const h3 = document.createElement('h3');
+  h3.textContent = m.name;
+  const role = document.createElement('span');
+  role.className = 'team-role';
+  role.textContent = m.role;
+
+  const bio = document.createElement('div');
+  bio.className = 'team-bio';
+  const p = document.createElement('p');
+  p.textContent = m.bioShort;
+  bio.append(p);
+
+  const more = (m.bioMore || '').split(/\n+|\s*\|\|\s*/).map(s => s.trim()).filter(Boolean);
+  if (more.length) {
+    const details = document.createElement('details');
+    details.className = 'team-bio-more';
+    details.innerHTML = '<summary><span>Read more</span><span>Read less</span></summary>';
+    const wrap = document.createElement('div');
+    more.forEach(text => {
+      const mp = document.createElement('p');
+      mp.textContent = text;
+      wrap.append(mp);
+    });
+    details.append(wrap);
+    bio.append(details);
+  }
+
+  card.append(h3, role, bio);
+  return card;
+}
+
+async function loadTeam() {
+  if (!teamGrid) return;
+  try {
+    const { items: rows } = await wix.items.query('Team')
+      .eq('visible', true).ascending('order').limit(50).find();
+    if (!rows.length) return;               // keep the hardcoded cards as a fallback
+    teamGrid.replaceChildren(...rows.map(buildTeamCard));
+  } catch (err) {
+    console.error('Could not load team:', err);
+  }
+}
+loadTeam();
+
 // ---------- MOBILE NAV ----------
 const navToggle = document.querySelector('.nav-toggle');
 const mainNav = document.querySelector('.main-nav');
@@ -75,34 +154,16 @@ contactForm?.addEventListener('submit', async (event) => {
     <span class="submit-arrow">→</span>
   `;
 
-  /*
-    -------------------------------------------------------
-    EMAIL SERVICE GOES HERE
-    -------------------------------------------------------
-
-    Your current static site does not have an email backend.
-
-    When you connect this to Formspree, EmailJS, Wix,
-    or another form service, put the request here.
-
-    Example:
-
-    const formData = new FormData(contactForm);
-
-    await fetch('YOUR_FORM_ENDPOINT', {
-      method: 'POST',
-      body: formData,
-      headers: {
-        'Accept': 'application/json'
-      }
-    });
-
-    -------------------------------------------------------
-  */
-
-  // Temporary frontend confirmation
-
-  await new Promise(resolve => setTimeout(resolve, 700));
+  try {
+    const data = Object.fromEntries(new FormData(contactForm));
+    await wix.items.insert('ContactMessages', data);
+  } catch (err) {
+    console.error('Contact failed:', err);
+    submitButton.disabled = false;
+    submitButton.innerHTML = originalButtonText;
+    alert('Sorry, something went wrong. Please try again or email us directly.');
+    return;
+  }
 
   contactFormState.style.display = 'none';
 
@@ -118,6 +179,10 @@ contactForm?.addEventListener('submit', async (event) => {
 // ---------- SEND ANOTHER REQUEST ----------
 
 contactReset?.addEventListener('click', () => {
+  const btn = contactForm.querySelector('.contact-submit');
+  btn.disabled = false;
+  btn.innerHTML = `<span>Request my quote</span><span class="submit-arrow">→</span>`;
+
   contactSuccess.hidden = true;
 
   contactForm.reset();
@@ -198,17 +263,7 @@ reviewForm?.addEventListener('submit', async (event) => {
   `;
 
   try {
-    /*
-      -------------------------------------------------------
-      SAVE THE REVIEW HERE
-      -------------------------------------------------------
-      Nothing is stored yet. Connect a form service or your Wix
-      CMS (for example a "Reviews" collection with an "approved"
-      field set to false) and send { name, review } from here.
-      Keep new reviews hidden until you approve them.
-      -------------------------------------------------------
-    */
-    await new Promise(resolve => setTimeout(resolve, 700)); // temporary
+    await wix.items.insert('ReviewSubmissions', { name, review });
   } catch (err) {
     console.error('Review failed:', err);
     submitButton.disabled = false;
@@ -231,6 +286,8 @@ reviewReset?.addEventListener('click', () => {
   reviewFormState.style.display = '';
 });
 
+
+// ---------- FAQ RECORDS ----------
 
 const records = [...document.querySelectorAll(".record-sleeve")];
 

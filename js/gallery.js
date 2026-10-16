@@ -1,3 +1,5 @@
+import { wix, imgUrl } from './wix.js';
+
 // ---------- GALLERY: DOMINO CROSSFADE ----------
 
 const PERIOD  = 5500; // how often each tile changes
@@ -7,8 +9,8 @@ const FADE_MS = 900;  // must match the opacity transition
 // Order the dominoes fall
 const ORDER = [0, 1, 2, 3, 4, 5];
 
-// EXTRA photos for each tile
-const MORE_PHOTOS = [
+// EXTRA photos for each tile (fallback if Wix can't be reached)
+let MORE_PHOTOS = [
   // 0: Wedding
   [
     'images/gallery/weddings/wedding2.jpg',
@@ -33,14 +35,41 @@ const MORE_PHOTOS = [
   ],
   // 5: Party
   [
-   'images/gallery/party/party7.jpg'
+    'images/gallery/party/party7.jpg'
   ],
 ];
 
-const tiles = [...document.querySelectorAll('.gallery-tile--image')];
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+async function initGallery() {
+  const tiles = [...document.querySelectorAll('.gallery-tile--image')];
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!tiles.length) return;
 
-if (tiles.length && !reduceMotion) {
+  // ---- Pull photos from the Wix "Gallery" collection ----
+  // tile: 0 = Wedding, 1 = Photo Booth, 2 = Mitzvah, 3 = Corporate, 4 = School, 5 = Party
+  try {
+    const { items: rows } = await wix.items.query('Gallery')
+      .eq('visible', true).ascending('order').limit(200).find();
+
+    if (rows.length) {
+      const byTile = tiles.map((_, i) =>
+        rows.filter(r => Number(r.tile) === i && r.image).map(r => imgUrl(r.image, 1200, 900))
+      );
+
+      // first photo of each tile replaces the one in the HTML
+      tiles.forEach((tile, i) => {
+        if (byTile[i].length) {
+          tile.querySelector('.gallery-image').src = byTile[i][0];
+        }
+      });
+
+      // remaining photos feed the crossfade rotation
+      MORE_PHOTOS = byTile.map(list => list.slice(1));
+    }
+  } catch (err) {
+    console.error('Could not load gallery:', err);
+  }
+
+  if (reduceMotion) return;
 
   const state = tiles.map((tile, i) => {
     const first = tile.querySelector('.gallery-image');
@@ -107,3 +136,5 @@ if (tiles.length && !reduceMotion) {
     }, position * STAGGER);
   });
 }
+
+initGallery();

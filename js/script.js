@@ -14,7 +14,6 @@ serviceTabs.forEach(tab => {
 });
 
 // ---------- TESTIMONIALS CAROUSEL ----------
-// This list is the fallback. If the Wix "Testimonials" collection has items, they replace it.
 let testimonials = [
   { quote: "All Around Sound of Monroe County is absolutely fantastic! DJ Stu is incredibly professional, responsive, and accommodating, and his prices are very competitive. We had the pleasure of working with his new DJ, Sam, who was excellent and played all the hits that kept everyone on the dance floor.", name: "Adam Connors" },
   { quote: "DJ Sam at All Around Sound was the perfect choice for our Back to School night. He kept the kids engaged and having fun with dance parties, contests, and so much more. It was also very easy to work with DJ Stu to schedule the event and keep in touch on the details.", name: "Krissy Jones" },
@@ -154,16 +153,34 @@ contactForm?.addEventListener('submit', async (event) => {
     <span class="submit-arrow">→</span>
   `;
 
-  try {
-    const data = Object.fromEntries(new FormData(contactForm));
-    await wix.items.insert('ContactMessages', data);
-  } catch (err) {
-    console.error('Contact failed:', err);
-    submitButton.disabled = false;
-    submitButton.innerHTML = originalButtonText;
-    alert('Sorry, something went wrong. Please try again or email us directly.');
-    return;
-  }
+  /*
+    -------------------------------------------------------
+    EMAIL SERVICE GOES HERE
+    -------------------------------------------------------
+
+    Your current static site does not have an email backend.
+
+    When you connect this to Formspree, EmailJS, Wix,
+    or another form service, put the request here.
+
+    Example:
+
+    const formData = new FormData(contactForm);
+
+    await fetch('YOUR_FORM_ENDPOINT', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    -------------------------------------------------------
+  */
+
+  // Temporary frontend confirmation
+
+  await new Promise(resolve => setTimeout(resolve, 700));
 
   contactFormState.style.display = 'none';
 
@@ -179,10 +196,6 @@ contactForm?.addEventListener('submit', async (event) => {
 // ---------- SEND ANOTHER REQUEST ----------
 
 contactReset?.addEventListener('click', () => {
-  const btn = contactForm.querySelector('.contact-submit');
-  btn.disabled = false;
-  btn.innerHTML = `<span>Request my quote</span><span class="submit-arrow">→</span>`;
-
   contactSuccess.hidden = true;
 
   contactForm.reset();
@@ -262,15 +275,7 @@ reviewForm?.addEventListener('submit', async (event) => {
     <span class="submit-arrow">→</span>
   `;
 
-  try {
-    await wix.items.insert('ReviewSubmissions', { name, review });
-  } catch (err) {
-    console.error('Review failed:', err);
-    submitButton.disabled = false;
-    submitButton.innerHTML = originalButtonText;
-    showReviewError('Sorry, something went wrong. Please try again in a moment.', reviewText);
-    return;
-  }
+
 
   submitButton.disabled = false;
   submitButton.innerHTML = originalButtonText;
@@ -285,7 +290,6 @@ reviewReset?.addEventListener('click', () => {
   clearReviewError();
   reviewFormState.style.display = '';
 });
-
 
 // ---------- FAQ RECORDS ----------
 

@@ -1861,37 +1861,37 @@ main>section{padding:150px 7vw 100px}
 /* ---------- SLEEVE COLORS + RESTING STACK ---------- */
 
 .sleeve-1 {
-  background: url("/images/records/expectations.jpg") center / cover;
+  background: url("/../images/records/expectations.jpg") center / cover;
   --rest: -90px;
   z-index: 10;
 }
 
 .sleeve-2 {
-  background: url("/images/records/equipment.jpg") center / cover;
+  background: url("/../images/records/equipment.jpg") center / cover;
   --rest: -72px;
   z-index: 20;
 }
 
 .sleeve-3 {
-  background: url("/images/records/music.jpg") center / cover;
+  background: url("/../images/records/music.jpg") center / cover;
   --rest: -54px;
   z-index: 30;
 }
 
 .sleeve-4 {
-  background: url("/images/records/travel.jpg") center / cover;
+  background: url("/../images/records/travel.jpg") center / cover;
   --rest: -36px;
   z-index: 40;
 }
 
 .sleeve-5 {
-  background: url("/images/records/booking.jpg") center / cover;
+  background: url("/../images/records/booking.jpg") center / cover;
   --rest: -18px;
   z-index: 50;
 }
 
 .sleeve-6 {
-  background: url("/images/records/equipment2.jpg") center / cover;
+  background: url("/../images/records/equipment2.jpg") center / cover;
   --rest: 0px;
   z-index: 50;
 }
